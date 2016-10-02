@@ -1,0 +1,581 @@
+.armory-search
+{
+
+}
+
+.armory-result
+{
+
+}
+
+	.armory-result table
+	{
+		width: 100%;
+		background-color: transparent !important;
+		border: 1px #DDD solid;
+		margin-bottom: 0px;
+	}
+
+	.armory-result thead
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+	.armory-result th
+	{
+		color: #FFF;
+		background-color: #2c82c9 !important;
+		border: 0px;
+	}
+
+	.armory-result tbody
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+	.armory-result tr:nth-child(even)
+	{
+		background-color: #222 !important;
+		border: 0px;
+	}
+
+	.armory-result tr:nth-child(odd)
+	{
+		background-color: #333 !important;
+		border: 0px;
+	}
+
+	.armory-result td
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+	.char-glyphs table
+	{
+		width: 100%;
+		background-color: transparent !important;
+		border: 1px #DDD solid;
+		margin-bottom: 0px;
+	}
+
+	.char-glyphs thead
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+	.char-glyphs th
+	{
+		color: #FFF;
+		background-color: #2c82c9 !important;
+		border: 0px;
+	}
+
+	.char-glyphs tbody
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+	.char-glyphs tr:nth-child(even)
+	{
+		background-color: #EEE !important;
+		border: 0px;
+	}
+
+	.char-glyphs tr:nth-child(odd)
+	{
+		background-color: #FFF !important;
+		border: 0px;
+	}
+
+	.char-glyphs td
+	{
+		background-color: transparent !important;
+		border: 0px;
+	}
+
+.char-result
+{
+	min-height: 455px;
+}
+
+	.icon
+	{
+		width: 34px;
+		height: 36px;
+	}
+
+	.icon:hover
+	{
+		width: 34px;
+		height: 36px;
+		opacity: 0.8;
+		cursor: pointer;
+	}
+
+	.char-info
+	{
+		position: absolute;
+		top: 10px;
+		left: 65px;
+		text-align: center;
+	}
+
+		.char-name
+		{
+
+		}
+
+		.char-level
+		{
+
+		}
+
+		.char-hp
+		{
+			margin-top: 20px;
+			background-color: #e74c3c;
+			border: 1px #111 solid;
+			width: 180px;
+			height: 30px;
+			text-align: center;
+			padding: 5px;
+			color: #FFF;	
+			font-family: 'Lato', sans-serif; /* Default Font Family */
+			font-weight: 700;
+			font-size: 0.75rem;
+			border-radius: 3px;
+		}
+
+		.char-power
+		{
+			margin-top: 10px;
+			border: 1px #111 solid;
+			width: 180px;
+			height: 30px;
+			text-align: center;
+			padding: 5px;
+			color: #FFF;	
+			font-family: 'Lato', sans-serif; /* Default Font Family */
+			font-weight: 700;
+			font-size: 0.75rem;
+			border-radius: 3px;
+		}
+
+		.base-stats
+		{
+			margin-top: 20px;
+		}
+
+			.base-header
+			{
+				height: 45px;
+				color: #FFF;
+				padding: 0.75rem 0rem 0rem 0.7rem;
+				background-color: #2c82c9;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				font-family: 'Lato', sans-serif; /* Default Font Family */
+				font-weight: 700;
+				font-size: 0.9rem;
+				border-left: 1px #DDD solid;
+				border-right: 1px #DDD solid;
+				border-top: 1px #DDD solid;
+				text-align: left;
+			}
+
+				.base-option
+				{
+					padding: 1px 10px 0px 0px;
+					float: right;
+				}
+
+				.base-option:hover
+				{
+					padding: 1px 10px 0px 0px;
+					float: right;
+					cursor: pointer;
+				}
+
+			.base-content
+			{
+				min-height: 100px;
+				min-width: 100%;
+				background-color: rgb(253, 253, 253);
+				padding: 0.7rem 0.7rem 0.5rem 0.7rem;
+				border-bottom-left-radius: 3px;
+				border-bottom-right-radius: 3px;
+				border-left: 1px #DDD solid;
+				border-right: 1px #DDD solid;
+				border-bottom: 1px #DDD solid;
+				float: left;
+			}
+
+				.stat
+				{
+					height: 25px;
+				}
+
+					.stat-left
+					{
+						float: left;
+					}
+
+					.stat-right
+					{
+						color: grey;
+						float: right;
+					}
+
+	/*
+		Char Slots Left
+	*/
+
+	.char-slot-left1
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 10px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left2
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 59px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left3
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 109px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left4
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 159px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left5
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 209px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left6
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 259px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left7
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 309px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-left8
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 359px;
+		left: 0px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	/*
+		Char Slots Right
+	*/
+
+	.char-slot-right1
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 10px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right2
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 59px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right3
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 109px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right4
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 159px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right5
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 209px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right6
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 259px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right7
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 309px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-right8
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 359px;
+		left: 268px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	/*
+		Char Slots Bottom
+	*/
+
+	.char-slot-bottom1
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 409px;
+		left: 82px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-bottom2
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 409px;
+		left: 132px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+	.char-slot-bottom3
+	{
+		width: 44px;
+		height: 44px;
+		background-color: rgba(50, 50, 50, 0.6);
+		position: absolute;
+		top: 409px;
+		left: 182px;
+		border-radius: 5px;
+		background-image: url('http://cdn.openwow.com/images/icon_border_medium.png');
+		padding: 5px 5px 0px 5px;
+	}
+
+.char-stats
+{
+	padding-top: 10px;
+}
+
+	.char-stats-header
+	{
+		height: 45px;
+		color: #FFF;
+		padding: 0.75rem 0rem 0rem 0.7rem;
+		background-color: #2c82c9;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		font-family: 'Lato', sans-serif; /* Default Font Family */
+		font-weight: 700;
+		font-size: 0.9rem;
+		border-left: 1px #DDD solid;
+		border-right: 1px #DDD solid;
+		border-top: 1px #DDD solid;
+	}
+
+	.char-stats-content
+	{
+		min-height: 100px;
+		min-width: 100%;
+		background-color: rgb(253, 253, 253);
+		padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-left: 1px #DDD solid;
+		border-right: 1px #DDD solid;
+		border-bottom: 1px #DDD solid;
+		float: left;
+	}
+
+.char-glyphs
+{
+	padding-top: 10px;
+}
+
+	.char-glyphs-header
+	{
+		height: 45px;
+		color: #FFF;
+		padding: 0.75rem 0rem 0rem 0.7rem;
+		background-color: #2c82c9;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		font-family: 'Lato', sans-serif; /* Default Font Family */
+		font-weight: 700;
+		font-size: 0.9rem;
+		border-left: 1px #DDD solid;
+		border-right: 1px #DDD solid;
+		border-top: 1px #DDD solid;
+	}
+
+	.char-glyphs-content
+	{
+		min-height: 100px;
+		min-width: 100%;
+		background-color: rgb(253, 253, 253);
+		padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-left: 1px #DDD solid;
+		border-right: 1px #DDD solid;
+		border-bottom: 1px #DDD solid;
+		float: left;
+	}
+
+	.char-glyphs-content table
+	{
+		width: 50%;
+		background-color: transparent !important;
+		border: 0px #DDD solid;
+		margin-bottom: 0px;
+		float: left;
+	}
+
+	.char-glyphs-content td
+	{
+		min-width: 65px;
+		max-width: 100%;
+	}
+
+	.char-glyphs-content tr
+	{
+		display: block;
+	}

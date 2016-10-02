@@ -1,0 +1,73 @@
+.header
+{
+
+}
+
+	.header-top
+	{
+		width: 100%;
+		height: 40px;
+		padding: 9px 20px 0px 5px;
+		background-color: #262E38;
+		color: #FFF;
+		font-size: 0.9rem;
+		position: fixed;
+		z-index: 100;
+	}
+
+		.header-top-left
+		{
+
+		}
+
+		.header-top-right
+		{
+			text-align: right;
+		}
+
+	.header-menu
+	{
+		width: 200px;
+		position: fixed;
+		left: 0px;
+		top: 40px;
+		bottom: 0px;
+		background-color: #222;
+	}
+
+		.header-menu-item
+		{
+
+		}
+
+			.main-menu
+			{
+				list-style: none;
+				list-style-type: none;
+				padding: 0px;
+				margin: 0px;
+			}
+
+			.main-menu li a
+			{
+				text-decoration: none;
+				color: #FFF;
+				display: block;
+				padding: 8px 5px 8px 15px;
+				font-size: 0.85rem;
+			}
+
+			.main-menu li a:hover
+			{
+				text-decoration: none;
+				color: #FFF;
+				display: block;
+				padding: 8px 5px 8px 15px;
+				font-size: 0.85rem;
+				background-color: #3498db;
+			}
+
+			.main-menu .current-nav
+			{
+				background-color: #3498db;
+			}

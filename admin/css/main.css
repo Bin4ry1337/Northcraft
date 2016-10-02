@@ -1,0 +1,89 @@
+body
+{
+	color: #000;
+	background-color: rgb(236, 238, 240);
+	/*background-image: url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/darth_stripe.png'); */
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.8rem;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/*
+	Foundation
+*/
+
+.row
+{
+	
+}
+
+.columns
+{
+	padding: 0px;
+}
+
+.column
+{
+	padding: 0px;
+}
+
+label
+{
+	color: #888 !important;
+}
+
+textarea
+{
+	min-height: 300px;
+	resize: none;
+}
+
+.button.small
+{
+	width: 120px;
+	height: 40px;
+	background-color: #34495e;
+	margin: 0px 5px 0px 0px;
+}
+
+.button:hover
+{
+	margin: 0px 5px 0px 0px;
+	background-color: #3498db;
+}
+
+.button:focus
+{
+	background-color: #34495e;
+	margin: 0px 5px 0px 0px;
+}
+
+
+
+/*
+	Bin4ryCMS Classes
+*/
+
+.bold
+{
+	font-weight: 700;
+}
+
+.thin
+{
+	font-weight: 200;
+}
+
+.large
+{
+	font-size: 1rem;
+}
+
+.small
+{
+	font-size: 0.75rem;
+}
