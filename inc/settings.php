@@ -46,7 +46,7 @@ $GeneralConfig = array(
 	'YOUTUBE'   => '',
 	'REDDIT'    => 'https://www.reddit.com/r/worldofnorthcraft/',
 	'DISCORD'   => '<div class="content-box column small-12 medium-4">
-						<iframe src="https://discordapp.com/widget?id=231834266382761987&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
+						<iframe src="https://discordapp.com/widget?id=159069949715808256&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
 					</div>'
 );
 
