@@ -654,7 +654,7 @@ function Changelog()
 				case 'raids':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Raid" ORDER BY id desc LIMIT 20');
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 2 ORDER BY id desc LIMIT 20');
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -727,7 +727,7 @@ function Changelog()
 				case 'dungeons':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Dungeon" ORDER BY id desc LIMIT 20');
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 1 ORDER BY id desc LIMIT 20');
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">

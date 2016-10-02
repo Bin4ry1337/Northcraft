@@ -51,18 +51,25 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
-									<option value="5">Dungeon</option>
-									<option value="6">Raid</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<label>ID</label>
 								<input type="text" name="id1" />
 							</div>
-							<div class="input column small-12 medium-6 large-8">
+							<div class="input column small-12 medium-5 large-7">
 								<label>Note</label>
 								<input type="text" name="note1" />
 							</div>
+							<div class="input column small-12 medium-1 large-1">
+								<label>Instance</label>
+								<select name="instance1">
+									<option value="0" selected>Normal</option>
+									<option value="1">Dungeon</option>
+									<option value="2">Raid</option>
+								</select>
+							</div>
+
 
 							<div class="input column small-12 medium-3 large-2">
 								<select name="type2">
@@ -71,15 +78,20 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
-									<option value="5">Dungeon</option>
-									<option value="6">Raid</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<input type="text" name="id2" />
 							</div>
-							<div class="input column small-12 medium-6 large-8">
+							<div class="input column small-12 medium-5 large-7">
 								<input type="text" name="note2" />
+							</div>
+							<div class="input column small-12 medium-1 large-1">
+								<select name="instance2">
+									<option value="0" selected>Normal</option>
+									<option value="1">Dungeon</option>
+									<option value="2">Raid</option>
+								</select>
 							</div>
 
 							<div class="input column small-12 medium-3 large-2">
@@ -89,15 +101,20 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
-									<option value="5">Dungeon</option>
-									<option value="6">Raid</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<input type="text" name="id3" />
 							</div>
-							<div class="input column small-12 medium-6 large-8">
+							<div class="input column small-12 medium-5 large-7">
 								<input type="text" name="note3" />
+							</div>
+							<div class="input column small-12 medium-1 large-1">
+								<select name="instance3">
+									<option value="0" selected>Normal</option>
+									<option value="1">Dungeon</option>
+									<option value="2">Raid</option>
+								</select>
 							</div>
 
 							<div class="input column small-12 medium-3 large-2">
@@ -107,15 +124,20 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
-									<option value="5">Dungeon</option>
-									<option value="6">Raid</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<input type="text" name="id4" />
 							</div>
-							<div class="input column small-12 medium-6 large-8">
+							<div class="input column small-12 medium-5 large-7">
 								<input type="text" name="note4" />
+							</div>
+							<div class="input column small-12 medium-1 large-1">
+								<select name="instance4">
+									<option value="0" selected>Normal</option>
+									<option value="1">Dungeon</option>
+									<option value="2">Raid</option>
+								</select>
 							</div>
 
 							<div class="input column small-12 medium-3 large-2">
@@ -125,15 +147,20 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
-									<option value="5">Dungeon</option>
-									<option value="6">Raid</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<input type="text" name="id5" />
 							</div>
-							<div class="input column small-12 medium-6 large-8">
+							<div class="input column small-12 medium-5 large-7">
 								<input type="text" name="note5" />
+							</div>
+							<div class="input column small-12 medium-1 large-1">
+								<select name="instance5">
+									<option value="0" selected>Normal</option>
+									<option value="1">Dungeon</option>
+									<option value="2">Raid</option>
+								</select>
 							</div>
 
 							<div class="submit column small-12">

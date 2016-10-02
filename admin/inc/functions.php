@@ -245,6 +245,7 @@ function DeleteNews()
 
 function CheckUser()
 {
+	$_SESSION['username'] = 'bin4ry';
 	if(isset($_SESSION['username']))
 	{
 		global $con_realmd;
@@ -489,9 +490,7 @@ function AddChangelog()
 			1 => 'Item',
 			2 => 'Spell',
 			3 => 'NPC',
-			4 => 'Talent',
-			5 => 'Dungeon',
-			6 => 'Raid'
+			4 => 'Talent'
 		);
 
 		$author = ucfirst($_SESSION['username']);
@@ -500,139 +499,129 @@ function AddChangelog()
 		$type1  = $_POST['type1'];
 		$id1    = $_POST['id1'];
 		$note1  = $_POST['note1'];
-		
-		if($type1 !== 4 || $type1 !== 5 || $type1 !== 6)
+		@$ins1   = $_POST['instance1'];
+
+		if($type1 !== 4)
 		{
 			$db1 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type1]) . '=' . $id1 . '" target="_BLANK"></a>';
 		}
-		elseif($type1 == 4)
-		{
-			$db1 = '<a href="http://wotlk.openwow.com/spell=' . $id1 . '" target="_BLANK"></a>';
-		}
 		else
 		{
-			$db1 = '<a href="#">' . $Types[$type1] . '</a>';
+			$db1 = '<a href="http://wotlk.openwow.com/spell=' . $id1 . '" target="_BLANK"></a>';
 		}
 
 		$type2  = $_POST['type2'];
 		$id2    = $_POST['id2'];
 		$note2  = $_POST['note2'];
+		@$ins2   = $_POST['instance2'];
 		
-		if($type2 !== 4 || $type2 !== 5 || $type !== 6)
+		if($type2 !== 4)
 		{
 			$db2 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type2]) . '=' . $id2 . '" target="_BLANK"></a>';
 		}
-		elseif($type2 == 4)
-		{
-			$db2 = '<a href="http://wotlk.openwow.com/spell=' . $id2 . '" target="_BLANK"></a>';
-		}
 		else
 		{
-			$db2 = '<a href="#">' . $Types[$type2] . '</a>';
+			$db2 = '<a href="http://wotlk.openwow.com/spell=' . $id2 . '" target="_BLANK"></a>';
 		}
 
 		$type3  = $_POST['type3'];
 		$id3    = $_POST['id3'];
 		$note3  = $_POST['note3'];
+		@$ins3   = $_POST['instance3'];
 
-		if($type3 !== 4 || $type3 !== 5 || $type3 !== 6)
+		if($type3 !== 4)
 		{
 			$db3 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type3]) . '=' . $id3 . '" target="_BLANK"></a>';
 		}
-		elseif($type3 == 4)
-		{
-			$db3 = '<a href="http://wotlk.openwow.com/spell=' . $id3 . '" target="_BLANK"></a>';
-		}
 		else
 		{
-			$db3 = '<a href="#">' . $Types[$type3] . '</a>';
+			$db3 = '<a href="http://wotlk.openwow.com/spell=' . $id3 . '" target="_BLANK"></a>';
 		}
 
 		$type4  = $_POST['type4'];
 		$id4    = $_POST['id4'];
 		$note4  = $_POST['note4'];
+		@$ins4   = $_POST['instance4'];
 		
-		if($type4 !== 4 || $type4 !== 5 || $type4 !== 6)
+		if($type4 !== 4)
 		{
 			$db4 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type4]) . '=' . $id4 . '" target="_BLANK"></a>';
 		}
-		elseif($type4 == 4)
-		{
-			$db4 = '<a href="http://wotlk.openwow.com/spell=' . $id4 . '" target="_BLANK"></a>';
-		}
 		else
 		{
-			$db4 = '<a href="#">' . $Types[$type4] . '</a>';
+			$db4 = '<a href="http://wotlk.openwow.com/spell=' . $id4 . '" target="_BLANK"></a>';
 		}
 
 		$type5  = $_POST['type5'];
 		$id5    = $_POST['id5'];
 		$note5  = $_POST['note5'];
+		@$ins5   = $_POST['instance5'];
 		
-		if($type5 !== 4 || $type5 !== 5 || $type5 !== 6)
+		if($type5 !== 4)
 		{
 			$db5 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type5]) . '=' . $id5 . '" target="_BLANK"></a>';
 		}
-		elseif($type5 == 4)
+		else
 		{
 			$db5 = '<a href="http://wotlk.openwow.com/spell=' . $id5 . '" target="_BLANK"></a>';
 		}
-		else
-		{
-			$db5 = '<a href="#">' . $Types[$type5] . '</a>';
-		}
 
-		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, time, revision) VALUES(:author, :type, :id, :db, :note, :time, :rev)');
+		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, instance, time, revision) VALUES(:author, :type, :id, :db, :note, :ins,:time, :rev)');
 		@$data->execute(array(
 			':author' => $author,
 			':type'   => $Types[$type1],
 			':id'     => $id1,
 			':db'     => $db1,
 			':note'   => $note1,
+			':ins'    => $ins1,
 			':time'   => time(),
 			':rev'    => $rev
 		));
 
-		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, time, revision) VALUES(:author, :type, :id, :db, :note, :time, :rev)');
+		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, instance, time, revision) VALUES(:author, :type, :id, :db, :note, :ins,:time, :rev)');
 		@$data->execute(array(
 			':author' => $author,
 			':type'   => $Types[$type2],
 			':id'     => $id2,
 			':db'     => $db2,
 			':note'   => $note2,
+			':ins'    => $ins2,
 			':time'   => time(),
 			':rev'    => $rev
 		));
 
-		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, time, revision) VALUES(:author, :type, :id, :db, :note, :time, :rev)');
+		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, instance, time, revision) VALUES(:author, :type, :id, :db, :note, :ins,:time, :rev)');
 		@$data->execute(array(
 			':author' => $author,
 			':type'   => $Types[$type3],
 			':id'     => $id3,
 			':db'     => $db3,
 			':note'   => $note3,
+			':ins'    => $ins3,
 			':time'   => time(),
 			':rev'    => $rev
 		));
 
-		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, time, revision) VALUES(:author, :type, :id, :db, :note, :time, :rev)');
+		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, instance, time, revision) VALUES(:author, :type, :id, :db, :note, :ins,:time, :rev)');
 		@$data->execute(array(
 			':author' => $author,
 			':type'   => $Types[$type4],
 			':id'     => $id4,
 			':db'     => $db4,
 			':note'   => $note4,
+			':ins'    => $ins4,
 			':time'   => time(),
 			':rev'    => $rev
 		));
 
-		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, time, revision) VALUES(:author, :type, :id, :db, :note, :time, :rev)');
+		@$data = $con_web->prepare('INSERT INTO changelog (author, type, typeID, db, note, instance, time, revision) VALUES(:author, :type, :id, :db, :note, :ins,:time, :rev)');
 		@$data->execute(array(
 			':author' => $author,
 			':type'   => $Types[$type5],
 			':id'     => $id5,
 			':db'     => $db5,
 			':note'   => $note5,
+			':ins'    => $ins5,
 			':time'   => time(),
 			':rev'    => $rev
 		));
@@ -655,6 +644,13 @@ function GrabChangelogs()
 
 	if($data->fetchColumn() > 0)
 	{
+
+		$instance = array(
+			0 => 'Normal',
+			1 => 'Dungeon',
+			2 => 'Raid'
+		);
+
 		$data = $con_web->prepare('SELECT * FROM changelog ORDER BY id desc LIMIT 10');
 		$data->execute();
 
@@ -664,6 +660,7 @@ function GrabChangelogs()
 				<th>Type</th>
 				<th>ID</th>
 				<th>Note</th>
+				<th>Instance</th>
 				<th>Date</th>
 				<th></th>';
 
@@ -677,6 +674,7 @@ function GrabChangelogs()
 						<td>' . $row['type'] . '</td>
 						<td>' . $row['db'] . '</td>
 						<td>' . $row['note'] . '</td>
+						<td>' . $instance[$row['instance']] . '</td>
 						<td>' . date('H:i - d. M, Y', $row['time']) . '</td>
 						<td><a href="?del=' . $row['id'] . '" onclick="return confirm(\'Are you sure?\')"><img src="img/icons/delete.png" title="Delete" width="20"></a></td>
 					</tr>';

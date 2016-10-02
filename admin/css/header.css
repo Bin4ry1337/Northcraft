@@ -71,3 +71,14 @@
 			{
 				background-color: #3498db;
 			}
+
+.openwow-tt table
+{
+	background-color: transparent !important;
+}
+
+table tr.even, table tr.alt, table tr:nth-of-type(even)
+{
+	background-color: transparent !important;
+	background-image: none;
+}

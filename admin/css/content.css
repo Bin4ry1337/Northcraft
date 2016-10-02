@@ -309,3 +309,8 @@
 			font-size: 0.8rem;
 			text-align: left !important;
 		}
+
+input[type="checkbox"]
+{
+	margin: 0px;
+}
