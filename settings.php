@@ -20,7 +20,7 @@ LoggedIn();
 		<div class="header-crump column small-12">
 			<ul class="breadcrumbs">
 			    <li><a href="index.php">Home</a></li>
-			    <li><a href="#">Account</a></li>
+			    <li><a href="account.php">Account</a></li>
 			    <li><a href="settings.php" class="current-nav">Account Settings</a></li>
 			</ul>
 		</div>
