@@ -556,7 +556,12 @@
 
 	.account-characters td a
 	{
-		color: #008CBA;
+		color: #DDD;
+	}
+
+	.account-characters td a:hover
+	{
+		color: #FFF;
 	}
 
 .account-avatar

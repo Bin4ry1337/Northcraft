@@ -58,44 +58,6 @@ body
 	padding: 0px;
 }
 
-.discordapp
-{
-	width: 300px;
-	background-color: #111;
-	border: 1px #333 solid;
-	border-radius: 3px;
-
-}
-
-.discord-header
-{
-	height: 50px;
-	background-color: #7289DA;
-	padding: 8px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-}
-
-.discord-logo
-{
-	display: block;
-}
-
-.discord-online
-{
-	text-align: right;
-	font-family: 'Lato', sans-serif; /* Default Font Family */
-	font-weight: 400;
-	font-size: 0.8rem;
-}
-
-.discord-content
-{
-	width: 100%;
-	min-height: 400px;
-	background-image: url('https://discordapp.com/assets/db9fd9dac08621e31b06609781c8851c.png');
-}
-
 </style>
 
 <span class="white">
@@ -107,25 +69,45 @@ $current = date('Y-m-d H:i:s', time());
 
 $datetime1 = new DateTime($start);
 $datetime2 = new DateTime($current);
-$interval = $datetime1->diff($datetime2);
-//echo $interval->format('%dd %hh %im %ss');
+$interval  = $datetime1->diff($datetime2);
+echo $interval->format('%dd %hh %im %ss');
 
 ?>
 </span>
 
-<div class="discordapp">
-	<div class="discord-header column small-12">
-		<div class="discord-logo column small-6">
-			<img src="https://discordapp.com/assets/4f004ac9be168ac6ee18fc442a52ab53.svg">
-		</div>
+<?php
+/*
+$username = 'remotebaby';
+$password = 'remote1337';
+$host     = '91.121.76.202';
+$port     = '48754';
 
-		<div class="discord-online column small-6">
-			<span class="bold">33</span> Members<br>Online
-		</div>
-	</div>
+try{
+	$client = new SoapClient(NULL, array(
+		"location"      => "http://91.121.76.202:48754/",
+		"uri"           => "urn:TC",
+		"style"         => SOAP_RPC,
+		"login"         => $username,
+		"password"      => $password,
+		'trace'         => 1,
+		'keep_alive'    => false
+	));
+	$command = "server info";
 
-	<div class="discord-content">
+	//execute
 
-	</div>
-</div>
+	$result = $client->executeCommand(new SoapParam($command, 'command'));
+	var_dump($client->__getLastRequest());
+	var_dump($client->__getLastResponse());
+	echo "Connected!<br/>";
+}
+catch ( Exception $e )
+{
+	echo "Connection Failed!<br/>";
+	echo $e->getMessage();
+}
+*/
+
+
+?>
 

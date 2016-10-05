@@ -17,6 +17,7 @@ IPCheck();
 	<link rel="stylesheet" type="text/css" href="../css/foundation.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../css/timeline.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/header.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/content.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/footer.css" media="screen" />
@@ -30,6 +31,7 @@ IPCheck();
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/foundation.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/timeline.js"></script>
 	<script type="text/javascript" src="js/foundation/foundation.dropdown.js"></script>
 	<script type="text/javascript" src="js/foundation/foundation.topbar.js"></script>
 	<script type="text/javascript" src="js/foundation/foundation.reveal.js"></script>
@@ -40,6 +42,7 @@ IPCheck();
 	<script>
 	var recaptcha1;
 	var recaptcha2;
+	var recaptcha3;
 	var myCallBack = function() {
 
 	  //Login Captcha
@@ -53,7 +56,28 @@ IPCheck();
 	    'sitekey' : '6Ld9gigTAAAAALSt-Um1KsdQpquhmaO7ROAvvSLE', //Replace this with your Site key
 	    'theme' : 'light'
 	  });
+	};
+	</script>
+
+	<?php if(basename($_SERVER['PHP_SELF']) == "support.php"): ?>
+	<script>
+	var recaptcha1;
+	var recaptcha2;
+	var recaptcha3;
+	var myCallBack = function() {
+
+	  //Login Captcha
+	  recaptcha1 = grecaptcha.render('g-recaptcha', {
+	    'sitekey' : '6Ld8gigTAAAAAAEF6MiiuKw0H0DybEVe4PDi0AaV', //Replace this with your Site key
+	    'theme' : 'light'
+	  });
 	  
+	  //Register Captcha
+	  recaptcha2 = grecaptcha.render('g-recaptcha2', {
+	    'sitekey' : '6Ld9gigTAAAAALSt-Um1KsdQpquhmaO7ROAvvSLE', //Replace this with your Site key
+	    'theme' : 'light'
+	  });
+
 	  //Support Captcha
 	  recaptcha3 = grecaptcha.render('g-recaptcha3', {
 	    'sitekey' : '6LdOmigTAAAAANVmsHLMSjaPhMti2FQ5ogO1ZJQ6', //Replace this with your Site key
@@ -61,6 +85,7 @@ IPCheck();
 	  });
 	};
 	</script>
+	<?php endif; ?>
 </head>
 <body>
 <div class="row2">

@@ -53,6 +53,16 @@
 		border: 0px;
 	}
 
+	.armory-result td a
+	{
+		color: #DDD;
+	}
+
+	.armory-result td a:hover
+	{
+		color: #FFF;
+	}
+
 	.char-glyphs table
 	{
 		width: 100%;
