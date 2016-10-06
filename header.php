@@ -129,7 +129,7 @@ Logout();
 				        <section class="top-bar-section">
 				            <!-- Right Nav Section -->
 				            <ul class="right">
-          		  			    <li><a href="index.php" class="current-nav"<?php echo (basename($_SERVER["PHP_SELF"]) == "index.php" || basename($_SERVER["PHP_SELF"]) == "")?"class=\"active\"":""; ?>>Home</a></li>
+          		  			    <li><a href="index.php" class="current-nav"<?php echo (basename($_SERVER["PHP_SELF"]) == "index.php" || basename($_SERVER["PHP_SELF"]) == "")?"class=\"current-nav\"":""; ?>>Home</a></li>
 				                <li class="has-dropdown">
 					                <a href="#">Client</a>
 						            <ul class="dropdown">
