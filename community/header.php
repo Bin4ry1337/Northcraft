@@ -25,17 +25,18 @@ IPCheck();
 	<link rel="stylesheet" type="text/css" href="../css/colors.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/armory.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../css/database.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../css/mobile.css" media="screen" />
 
 	<!-- Javascript Stylesheets -->
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/foundation.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/timeline.js"></script>
-	<script type="text/javascript" src="js/foundation/foundation.dropdown.js"></script>
-	<script type="text/javascript" src="js/foundation/foundation.topbar.js"></script>
-	<script type="text/javascript" src="js/foundation/foundation.reveal.js"></script>
-	<script type="text/javascript" src="js/foundation/modernizr.js"></script>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/foundation.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
+	<script type="text/javascript" src="../js/timeline.js"></script>
+	<script type="text/javascript" src="../js/foundation/foundation.dropdown.js"></script>
+	<script type="text/javascript" src="../js/foundation/foundation.topbar.js"></script>
+	<script type="text/javascript" src="../js/foundation/foundation.reveal.js"></script>
+	<script type="text/javascript" src="../js/foundation/modernizr.js"></script>
 	
 	<!-- Google ReCaptcha -->
 	<script src="https://www.google.com/recaptcha/api.js?onload=myCallBack&render=explicit" async defer></script>
@@ -144,6 +145,63 @@ IPCheck();
 						<?php AccountMenu2(); ?>
 					</ul>
 				</div>
+			</div>
+
+			<div class="header-bottom column show-for-small-only small-12">
+				<nav>
+					<div class="top-bar" data-topbar>
+						<ul class="title-area">
+				            <li class="name">
+				            <h1><a href="#">Northcraft</a></h1>
+				            </li>
+				            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+				        </ul>
+
+				        <section class="top-bar-section">
+				            <!-- Right Nav Section -->
+				            <ul class="right">
+          		  			    <li><a href="../index.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "index.php" || basename($_SERVER["PHP_SELF"]) == "")?"class=\"current-nav\"":""; ?>>Home</a></li>
+				                <li class="has-dropdown">
+					                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "client.php" || basename($_SERVER["PHP_SELF"]) == "connect.php" || basename($_SERVER["PHP_SELF"]) == "downloads.php")?"class=\"current-nav\"":""; ?>>Client</a>
+						            <ul class="dropdown">
+						           		<li><a href="../client/connect.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "connect.php")?"class=\"current-nav\"":""; ?>>Connect</a></li>
+						               	<li><a href="../client/downloads.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "downloads.php")?"class=\"current-nav\"":""; ?>>Downloads</a></li>
+					                </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "gallery.php")?"class=\"current-nav\"":""; ?>>Media</a>
+					               <ul class="dropdown">
+					               		<li><a href="../media/gallery.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "gallery.php")?"class=\"current-nav\"":""; ?>>Gallery</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php" || basename($_SERVER["PHP_SELF"]) == "timeline.php" || basename($_SERVER["PHP_SELF"]) == "faq.php" || basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav\"":""; ?>>Community</a>
+					               <ul class="dropdown">
+					               		<li><a href="changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php")?"class=\"current-nav\"":""; ?>>Changelog</a></li>
+					               		<li><a href="timeline.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "timeline.php")?"class=\"current-nav\"":""; ?>>Timeline</a></li>
+					               		<li><a href="../forums">Forums</a></li>
+					               		<li><a href="faq.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "faq.php")?"class=\"current-nav\"":""; ?>>FAQ</a></li>
+					               		<li><a href="support.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav\"":""; ?>>Support</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php" || basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>Armory</a>
+					               <ul class="dropdown">
+					               		<li><a href="../armory/armory.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php")?"class=\"current-nav\"":""; ?>>Character Database</a></li>
+					               		<li><a href="../armory/database.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>Item Database</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="divider"></li>
+
+				                <?php MobileMenu2(); ?>
+				            </ul>
+				        </section>
+					</div>
+				</nav>
 			</div>
 		</div>
 	</div>

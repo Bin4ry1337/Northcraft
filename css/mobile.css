@@ -1,0 +1,63 @@
+.top-bar
+{
+	background: transparent !important;
+}
+
+.top-bar .title-area
+{
+	padding-top: 8px;
+}
+
+.top-bar .menu-icon
+{
+	padding-top: 4px;
+}
+
+.top-bar .expanded
+{
+	background: transparent !important;	
+}
+
+.top-bar-section .dropdown li.title.back h5 a
+{
+	color: #888;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.95rem;
+}
+
+.top-bar-section .dropdown li.title.back h5 a:hover
+{
+	color: #FFF;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.95rem;
+}
+
+.top-bar .has-dropdown a
+{
+	color: #FFF;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.9rem;
+}
+
+.top-bar-section ul li .current-nav
+{
+	color: #FFF !important;
+	background-color: #222;
+}
+
+.top-bar .has-dropdown .dropdown a
+{
+	color: #DDD;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.8rem;
+	padding: 15px 0px 15px 10px;
+}
+
+.top-bar-section .has-dropdown.moved > .dropdown
+{
+	margin-bottom: 6px;
+}

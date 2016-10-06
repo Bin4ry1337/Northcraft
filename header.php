@@ -23,6 +23,7 @@ Logout();
 	<link rel="stylesheet" type="text/css" href="css/footer.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/fonts.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/colors.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen" />
 
 	<!-- Javascript Stylesheets -->
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -113,6 +114,63 @@ Logout();
 						<?php AccountMenu(); ?>
 					</ul>
 				</div>
+			</div>
+
+			<div class="header-bottom column show-for-small-only small-12">
+				<nav>
+					<div class="top-bar" data-topbar>
+						<ul class="title-area">
+				            <li class="name">
+				            <h1><a href="#">Northcraft</a></h1>
+				            </li>
+				            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+				        </ul>
+
+				        <section class="top-bar-section">
+				            <!-- Right Nav Section -->
+				            <ul class="right">
+          		  			    <li><a href="index.php" class="current-nav"<?php echo (basename($_SERVER["PHP_SELF"]) == "index.php" || basename($_SERVER["PHP_SELF"]) == "")?"class=\"active\"":""; ?>>Home</a></li>
+				                <li class="has-dropdown">
+					                <a href="#">Client</a>
+						            <ul class="dropdown">
+						           		<li><a href="client/connect.php">Connect</a></li>
+						               	<li><a href="client/downloads.php">Downloads</a></li>
+					                </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#">Media</a>
+					               <ul class="dropdown">
+					               		<li><a href="media/gallery.php">Gallery</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#">Community</a>
+					               <ul class="dropdown">
+					               		<li><a href="community/changelog.php">Changelog</a></li>
+					               		<li><a href="community/timeline.php">Timeline</a></li>
+					               		<li><a href="forums">Forums</a></li>
+					               		<li><a href="community/faq.php">FAQ</a></li>
+					               		<li><a href="community/support.php">Support</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="has-dropdown">
+				                <a href="#">Armory</a>
+					               <ul class="dropdown">
+					               		<li><a href="armory/armory.php">Character Database</a></li>
+					               		<li><a href="armory/database.php">Item Database</a></li>
+				                    </ul>
+				                </li>
+
+				                <li class="divider"></li>
+
+				                <?php MobileMenu(); ?>
+				            </ul>
+				        </section>
+					</div>
+				</nav>
 			</div>
 		</div>
 	</div>

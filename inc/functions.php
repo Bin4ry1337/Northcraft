@@ -1226,6 +1226,50 @@ function AccountMenu2()
 
 
 
+function MobileMenu()
+{
+	if(isset($_SESSION['username']))
+	{
+		echo '<li class="has-dropdown">
+                <a href="#">My Account</a>
+                	<ul class="dropdown">
+                		<li><a href="account.php">User Panel</a></li>
+                		<li><a href="settings.php">Settings</a></li>
+                		<li><a href="?logout=1">Logout</a></li>
+                	</ul>
+                </li>';
+	}
+	else
+	{
+		echo '<li><a href="#" class="open-login" data-reveal-id="login-modal">Login</a></li>
+			  <li><a href="#" class="open-register" data-reveal-id="register-modal">Register</a></li>';
+	}
+}
+
+
+
+function MobileMenu2()
+{
+	if(isset($_SESSION['username']))
+	{
+		echo '<li class="has-dropdown">
+                <a href="#">My Account</a>
+                	<ul class="dropdown">
+                		<li><a href="../account.php">User Panel</a></li>
+                		<li><a href="../settings.php">Settings</a></li>
+                		<li><a href="../?logout=1">Logout</a></li>
+                	</ul>
+                </li>';
+	}
+	else
+	{
+		echo '<li><a href="#" class="open-login" data-reveal-id="login-modal">Login</a></li>
+			  <li><a href="#" class="open-register" data-reveal-id="register-modal">Register</a></li>';
+	}
+}
+
+
+
 function Logout()
 {
 	if(isset($_GET['logout']))

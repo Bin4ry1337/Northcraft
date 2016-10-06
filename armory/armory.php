@@ -5,7 +5,7 @@ include('header.php');
 ?>
 
 <!-- OpenWoW -->
-<script type="text/javascript" src="js/openwow.js"></script>	
+<script type="text/javascript" src="../js/openwow.js"></script>	
 <script type="text/javascript">
 	var openwowTooltips = {
 	        /* Enable or disable the rename of URLs into item, spell and other names automatically */
