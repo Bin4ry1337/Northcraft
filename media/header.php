@@ -85,7 +85,7 @@ IPCheck();
 			<div class="header-top column small-12 medium-12">
 				<a href="index.php">
 					<div class="header-logo column small-12 medium-6">
-						<img src="../img/logo.png" width="450">
+						<img src="../img/logo.png" width="380">
 					</div>
 
 					<div class="header-content column small-12 medium-6">
@@ -114,13 +114,16 @@ IPCheck();
 								<li><a href="gallery.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "gallery.php")?"class=\"current-nav\"":""; ?>>Gallery</a></li>
 							</ul>
 
-						<li><a href="../community/changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php" || basename($_SERVER["PHP_SELF"]) == "faq.php" || basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="community-dropdown" aria-controls="community-dropdown" aria-expanded="false" data-options="is_hover:true; hover_timeout:200">COMMUNITY</a></li>
+						<li><a href="../community/changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php" || basename($_SERVER["PHP_SELF"]) == "timeline.php" || basename($_SERVER["PHP_SELF"]) == "faq.php" || basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="community-dropdown" aria-controls="community-dropdown" aria-expanded="false" data-options="is_hover:true; hover_timeout:200">COMMUNITY</a></li>
 							<ul id="community-dropdown" data-dropdown-content class="f-dropdown sub-dropdown" aria-hidden="true">
 								<li><a href="../community/changelog.php">Changelog</a></li>
+								<li><a href="../community/timeline.php">Timeline</a></li>
 								<li><a href="../forums/">Forums</a></li>
 								<li><a href="../community/faq.php">FAQ</a></li>
 								<li><a href="../community/support.php">Support</a></li>
 							</ul>
+
+				        <li><a href="../bugtracker/">BUGTRACKER</a></li>
 
 						<li><a href="../armory/armory.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php" || basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="armory-dropdown" aria-controls="armory-dropdown" aria-expanded="false" class="dropdown" data-options="is_hover:true; hover_timeout:200">ARMORY</a></li>
 							<ul id="armory-dropdown" data-dropdown-content class="f-dropdown sub-dropdown" aria-hidden="true">
@@ -176,6 +179,8 @@ IPCheck();
 					               		<li><a href="../community/support.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav\"":""; ?>>Support</a></li>
 				                    </ul>
 				                </li>
+
+				        		<li><a href="../bugtracker/">Bugtracker</a></li>
 
 				                <li class="has-dropdown">
 				                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php" || basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>Armory</a>

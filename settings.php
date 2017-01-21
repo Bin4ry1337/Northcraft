@@ -118,8 +118,8 @@ LoggedIn();
 								</tr>
 
 								<tr>
-									<td>Uptime</td>
-									<td><span class="green"><?php ServerInfo('UPTIME'); ?></span></td>
+									<td>Status</td>
+									<td><span class="green"><?php ServerInfo('STATUS'); ?></span></td>
 								</tr>
 							</table>
 

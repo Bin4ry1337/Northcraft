@@ -37,15 +37,19 @@ CheckUser();
 	<script>
 		tinymce.init({
 			selector: "#news-textarea",
-			plugins: "textcolor colorpicker code",
-			toolbar: "forecolor backcolor undo redo | styleselect bold italic | alignleft aligncenter alignright bullist numlist | outdent indent code"
+			plugins: "textcolor colorpicker code link media mediaembed",
+			toolbar: "forecolor backcolor undo redo | styleselect bold italic | alignleft aligncenter alignright bullist numlist | link code",
+			mediaembed_service_url: 'SERVICE_URL',
+			mediaembed_max_width: 460
 		});
 
 
 		tinymce.init({
 			selector: "#news-textarea2",
-			plugins: "textcolor colorpicker code",
-			toolbar: "forecolor backcolor undo redo | styleselect bold italic | alignleft aligncenter alignright bullist numlist | outdent indent code"
+			plugins: "textcolor colorpicker code link media mediaembed",
+			toolbar: "forecolor backcolor undo redo | styleselect bold italic | alignleft aligncenter alignright bullist numlist | link code",
+			mediaembed_service_url: 'SERVICE_URL',
+			mediaembed_max_width: 460
 		});
 	</script>
 </head>

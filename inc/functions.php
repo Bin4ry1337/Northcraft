@@ -200,11 +200,25 @@ function Changelog()
 		{
 			global $con_web;
 
-			$input = strtolower((int)$_GET['search']);
+			$search = strtolower((int)$_GET['search']);
 
-			$data = $con_web->prepare('SELECT * FROM changelog WHERE typeID LIKE ? LIMIT 20');
+			$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+			$perPage = 10;
+
+			$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+			$data = $con_web->prepare('SELECT COUNT(*) FROM changelog WHERE typeID LIKE ?');
 			$data->execute(array(
-				"%$input%"
+				"%$search%"
+			));
+
+			$total = $data->fetchColumn();
+
+			$pages = ceil($total / $perPage);
+
+			$data = $con_web->prepare('SELECT * FROM changelog WHERE typeID LIKE ? LIMIT ' . $start . ', ' . $perPage);
+			$data->execute(array(
+				"%$search%"
 			));
 
 			echo '<div class="changelog-top column small-12">
@@ -213,31 +227,31 @@ function Changelog()
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=npc">NPCs</a>
+						<a href="?page=1&filter=creatures">Creatures</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=items">Items</a>
+						<a href="?page=1&filter=items">Items</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=quests">Quests</a>
+						<a href="?page=1&filter=quests">Quests</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=spells">Spells</a>
+						<a href="?page=1&filter=spells">Spells</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=talents">Talents</a>
+						<a href="?page=1&filter=talents">Talents</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=raids">Raids</a>
+						<a href="?page=1&filter=raids">Raids</a>
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=dungeons">Dungeons</a>
+						<a href="?page=1&filter=dungeons">Dungeons</a>
 					</div>
 				</div>
 
@@ -265,13 +279,41 @@ function Changelog()
 							<td>' . $row['typeID'] . '</td>
 							<td>' . $row['db'] . '</td>
 							<td>' . $row['note'] . '</td>
-							<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+							<td>' . date('d. M, Y', $row['time']) . '</td>
 						</tr>';
 				}
 			}
 
 			echo '</table>
 				</div>';
+
+			echo '<div class="page-nav column small-12"><ul>';
+
+				echo '<li><a href="?page=1&search=' . $search . '"><<</a></li>';
+				
+				$min = max($page - 2, 1);
+				$max = min($page + 2, $pages);
+
+				for($x = $min; $x <= $max; $x++)
+				{
+					if($page == $x)
+					{
+						echo '<li><a href="?page=' . $x . '&search=' . $search . '" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+					}
+					else
+					{
+						echo '<li><a href="?page=' . $x . '&search=' . $search . '">' . $x . '</a></li>';
+					}
+				}
+
+				if(empty($total))
+				{
+					echo '<li><a href="?page=' . $x . '&search=' . $search . '" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+				}
+
+				echo '<li><a href="?page=' . $pages . '&search=' . $search . '">>></a></li>';
+
+			echo '</ul></div>';
 		}
 		else
 		{
@@ -282,14 +324,22 @@ function Changelog()
 	{
 		if(isset($_GET['filter']))
 		{
-			$filter = $_GET['filter'];
+			$filter = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['filter']);
 
 			switch($filter)
 			{
-				case 'npc':
+				case 'creatures':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "NPC" ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE type = "Creature"')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Creature" ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -298,31 +348,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -350,19 +400,55 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=creatures"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=creatures" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=creatures">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=creatures" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=creatures">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'items':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Item" ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE type = "Item"')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Item" ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -371,31 +457,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -423,19 +509,68 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=items"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=items" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=items">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=items" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=items">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'quests':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Quest" ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE type = "Quest"')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Quest" ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -444,31 +579,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -496,19 +631,68 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=quests"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=quests" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=quests">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=quests" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=quests">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'spells':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Spell" ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE type = "Spell"')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Spell" ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -517,31 +701,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -569,19 +753,68 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=spells"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=spells" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=spells">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=spells" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=spells">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'talents':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Talent" ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE type = "Talent"')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE type = "Talent" ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -590,31 +823,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -642,19 +875,68 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=talents"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=talents" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=talents">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=talents" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=talents">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'raids':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 2 ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE instance = 2')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 2 ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -663,31 +945,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creature">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -715,19 +997,68 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=raids"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=raids" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=raids">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=raids" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=raids">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 
 				case 'dungeons':
 					global $con_web;
 
-					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 1 ORDER BY id desc LIMIT 20');
+					$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+					$perPage = 10;
+
+					$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+					$total = $con_web->query('SELECT COUNT(*) FROM changelog WHERE instance = 1')->fetchColumn();
+					$pages = ceil($total / $perPage);
+
+					$data = $con_web->prepare('SELECT * FROM changelog WHERE instance = 1 ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 					$data->execute();
 
 					echo '<div class="changelog-top column small-12">
@@ -736,31 +1067,31 @@ function Changelog()
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=npc">NPCs</a>
+								<a href="?page=1&filter=creatures">Creatures</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=items">Items</a>
+								<a href="?page=1&filter=items">Items</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=quests">Quests</a>
+								<a href="?page=1&filter=quests">Quests</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=spells">Spells</a>
+								<a href="?page=1&filter=spells">Spells</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=talents">Talents</a>
+								<a href="?page=1&filter=talents">Talents</a>
 							</div>
 
 							<div class="changelog-tab">
-								<a href="?filter=raids">Raids</a>
+								<a href="?page=1&filter=raids">Raids</a>
 							</div>
 
 							<div class="changelog-tab-current">
-								<a href="?filter=dungeons">Dungeons</a>
+								<a href="?page=1&filter=dungeons">Dungeons</a>
 							</div>
 						</div>
 
@@ -788,13 +1119,54 @@ function Changelog()
 									<td>' . $row['typeID'] . '</td>
 									<td>' . $row['db'] . '</td>
 									<td>' . $row['note'] . '</td>
-									<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+									<td>' . date('d. M, Y', $row['time']) . '</td>
 								</tr>';
 						}
 					}
 
+					if(empty($total))
+					{
+						echo '<tr>
+								<td><span class="red">There seems to be no changelogs here yet!</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>';
+					}
+
 					echo '</table>
 						</div>';
+
+					echo '<div class="page-nav column small-12"><ul>';
+
+						echo '<li><a href="?page=1&filter=dungeons"><<</a></li>';
+						
+						$min = max($page - 2, 1);
+						$max = min($page + 2, $pages);
+
+						for($x = $min; $x <= $max; $x++)
+						{
+							if($page == $x)
+							{
+								echo '<li><a href="?page=' . $x . '&filter=dungeons" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+							}
+							else
+							{
+								echo '<li><a href="?page=' . $x . '&filter=dungeons">' . $x . '</a></li>';
+							}
+						}
+
+						if(empty($total))
+						{
+							echo '<li><a href="?page=' . $x . '&filter=dungeons" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+						}
+
+						echo '<li><a href="?page=' . $pages . '&filter=dungeons">>></a></li>';
+
+					echo '</ul></div>';
 				break;
 			}
 		}
@@ -802,7 +1174,15 @@ function Changelog()
 		{
 			global $con_web;
 
-			$data = $con_web->prepare('SELECT * FROM changelog ORDER BY id desc LIMIT 20');
+			$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+			$perPage = 10;
+
+			$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+			$total = $con_web->query('SELECT COUNT(*) FROM changelog')->fetchColumn();
+			$pages = ceil($total / $perPage);
+
+			$data = $con_web->prepare('SELECT * FROM changelog ORDER BY id desc LIMIT ' . $start . ', ' . $perPage);
 			$data->execute();
 
 			echo '<div class="changelog-top column small-12">
@@ -811,7 +1191,7 @@ function Changelog()
 					</div>
 
 					<div class="changelog-tab">
-						<a href="?filter=npc">NPCs</a>
+						<a href="?filter=creatures">Creatures</a>
 					</div>
 
 					<div class="changelog-tab">
@@ -863,13 +1243,53 @@ function Changelog()
 							<td>' . $row['typeID'] . '</td>
 							<td>' . $row['db'] . '</td>
 							<td>' . $row['note'] . '</td>
-							<td>' . date('H:i - d.M, Y', $row['time']) . '</td>
+							<td>' . date('d. M, Y', $row['time']) . '</td>
 						</tr>';
 				}
 			}
 
+			if(empty($total))
+			{
+				echo '<tr>
+						<td><span class="red">There seems to be no changelogs here yet!</span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>';
+			}
+
 			echo '</table>
 				</div>';
+			
+			echo '<div class="page-nav column small-12"><ul>';
+
+				echo '<li><a href="?page=1"><<</a></li>';
+				
+				$min = max($page - 2, 1);
+				$max = min($page + 2, $pages);
+
+				for($x = $min; $x <= $max; $x++)
+				{
+					if(@$page == $x)
+					{
+						echo '<li><a href="?page=' . $x . '" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+					}
+					elseif(@!isset($page))
+					{
+						echo '<li><a href="?page=' . $x . '" style="color: #FFF;background-color: #2c82c9;font-family: "Lato", sans-serif;font-weight: 400;font-size: 0.9rem;">' . $x . '</a></li>';
+					}
+					else
+					{
+						echo '<li><a href="?page=' . $x . '">' . $x . '</a></li>';
+					}
+				}
+
+				echo '<li><a href="?page=' . $pages . '">>></a></li>';
+
+			echo '</ul></div>';
 		}
 	}
 }
@@ -1136,6 +1556,10 @@ function ServerInfo($value)
 			{
 				// Echo Uptime
 			}
+			break;
+
+		case 'STATUS':
+			echo '<span class="red">Closed Beta</span>';
 			break;
 
 		case 'REALMLIST':

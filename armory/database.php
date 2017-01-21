@@ -100,8 +100,83 @@ include('header.php');
 
 						</div>
 						
-						<?php itemDatabase(); ?>
+						<?php //itemDatabase(); ?>
 
+						<div class="database-container column small-12 medium-12 large-9">
+							<div class="item-container">
+								<div class="item-icon">
+									<img src="img/icons/items/inv_sword_36.jpg">
+								</div>
+
+								<div class="item-info">
+									<div class="item-name">
+										<span class="uncommon">Dragonmaw Shortsword</span>
+									</div>
+
+									<div class="item-type">
+										Binds when equipped
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											One-hand
+										</div>
+
+										<div class="item-info-right">
+											Sword
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											22 - 42 Damage
+										</div>
+
+										<div class="item-info-right">
+											Speed 2.20
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											(14.5 damage per second)
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											+4 Stamina
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											Durability 70/70
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											Requires Level 23
+										</div>
+									</div>
+
+									<div class="item-info-line">
+										<div class="item-info-left">
+											Item Level 28
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="database-container column small-12 medium-12 large-3">
+							
+						</div>
+
+						<div class="database-container column small-12">
+
+						</div>
 					</div>
 				</div>	
 			</div>

@@ -43,7 +43,6 @@ IPCheck();
 	<script>
 	var recaptcha1;
 	var recaptcha2;
-	var recaptcha3;
 	var myCallBack = function() {
 
 	  //Login Captcha
@@ -95,7 +94,7 @@ IPCheck();
 			<div class="header-top column small-12 medium-12">
 				<a href="index.php">
 					<div class="header-logo column small-12 medium-6">
-						<img src="../img/logo.png" width="450">
+						<img src="../img/logo.png" width="380">
 					</div>
 
 					<div class="header-content column small-12 medium-6">
@@ -124,13 +123,16 @@ IPCheck();
 								<li><a href="../media/gallery.php">Gallery</a></li>
 							</ul>
 
-						<li><a href="changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php" || basename($_SERVER["PHP_SELF"]) == "faq.php" || basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="community-dropdown" aria-controls="community-dropdown" aria-expanded="false" data-options="is_hover:true; hover_timeout:200">COMMUNITY</a></li>
+						<li><a href="changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php" || basename($_SERVER["PHP_SELF"]) == "timeline.php" || basename($_SERVER["PHP_SELF"]) == "faq.php" || basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="community-dropdown" aria-controls="community-dropdown" aria-expanded="false" data-options="is_hover:true; hover_timeout:200">COMMUNITY</a></li>
 							<ul id="community-dropdown" data-dropdown-content class="f-dropdown sub-dropdown" aria-hidden="true">
 								<li><a href="changelog.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "changelog.php")?"class=\"current-nav\"":""; ?>>Changelog</a></li>
+								<li><a href="timeline.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "timeline.php")?"class=\"current-nav\"":""; ?>>Timeline</a></li>
 								<li><a href="../forums/">Forums</a></li>
 								<li><a href="faq.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "faq.php")?"class=\"current-nav\"":""; ?>>FAQ</a></li>
 								<li><a href="support.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav\"":""; ?>>Support</a></li>
 							</ul>
+
+				        <li><a href="../bugtracker/">BUGTRACKER</a></li>
 
 						<li><a href="../armory/armory.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php" || basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav dropdown\"":"class=\"dropdown\""; ?> data-dropdown="armory-dropdown" aria-controls="armory-dropdown" aria-expanded="false" class="dropdown" data-options="is_hover:true; hover_timeout:200">ARMORY</a></li>
 							<ul id="armory-dropdown" data-dropdown-content class="f-dropdown sub-dropdown" aria-hidden="true">
@@ -186,6 +188,8 @@ IPCheck();
 					               		<li><a href="support.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "support.php")?"class=\"current-nav\"":""; ?>>Support</a></li>
 				                    </ul>
 				                </li>
+
+				        		<li><a href="../bugtracker/">Bugtracker</a></li>
 
 				                <li class="has-dropdown">
 				                <a href="#" <?php echo (basename($_SERVER["PHP_SELF"]) == "armory.php" || basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>Armory</a>

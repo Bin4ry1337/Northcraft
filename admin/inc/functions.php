@@ -245,7 +245,6 @@ function DeleteNews()
 
 function CheckUser()
 {
-	$_SESSION['username'] = 'bin4ry';
 	if(isset($_SESSION['username']))
 	{
 		global $con_realmd;
@@ -489,8 +488,190 @@ function AddChangelog()
 			0 => 'Quest',
 			1 => 'Item',
 			2 => 'Spell',
-			3 => 'NPC',
-			4 => 'Talent'
+			3 => 'Creature',
+			4 => 'Talent',
+			5 => 'Zone'
+		);
+
+		$ZoneToName = array(
+
+			//Kalimdor
+			772 => "Ahn'Qiraj: The Fallen Kingdom",
+			894 => "Ammen Vale",
+			43  => "Ashenvale",
+			181 => "Azshara",
+			464 => "Azuremyst Isle",
+			476 => "Bloodmyst Isle",
+			42  => "Darkshore",
+			381 => "Darnassus",
+			101 => "Desolace",
+			4   => "Durotar",
+			141 => "Dustwallow Marsh",
+			891 => "Echo Isles",
+			182 => "Felwood",
+			121 => "Feralas",
+			241 => "Moonglade",
+			606 => "Mount Hyjal",
+			9   => "Mulgore",
+			11  => "Northern Barrens",
+			321 => "Orgrimmar",
+			888 => "Shadowglen",
+			261 => "Silithus",
+			607 => "Southern Barrens",
+			81  => "Stonetalon Mountains",
+			161 => "Tanaris",
+			41  => "Teldrassil",
+			471 => "The Exodar",
+			61  => "Thousand Needles",
+			362 => "Thunder Bluff",
+			201 => "Un'Goro Crater",
+			889 => "Valley of Trials",
+			281 => "Winterspring",
+
+			//Eastern Kingdoms
+			16  => "Arathi Highlands",
+			17  => "Badlands",
+			19  => "Blasted Lands",
+			29  => "Burning Steppes",
+			866 => "Coldridge Valley",
+			32  => "Deadwind Pass",
+			27  => "Dun Morogh",
+			34  => "Duskwood",
+			23  => "Eastern Plaguelands",
+			30  => "Elwynn Forest",
+			462 => "Eversong Woods",
+			463 => "Ghostlands",
+			24  => "Hillsbrad Foothills",
+			341 => "Ironforge",
+			499 => "Isle of Quel'Danas",
+			35  => "Loch Modan",
+			36  => "Redridge Mountains",
+			28  => "Searing Gorge",
+			480 => "Silvermoon City",
+			21  => "Silverpine Forest",
+			301 => "Stormwind City",
+			33  => "Stranglethorn Vale",
+			893 => "Sunstrider Isle",
+			38  => "Swamp of Sorrows",
+			26  => "The Hinterlands",
+			20  => "Tirisfal Glades",
+			382 => "Undercity",
+			22  => "Western Plaguelands",
+			39  => "Westfall",
+			40  => "Wetlands",
+
+			//Outland
+			475 => "Blade's Edge Mountains",
+			465 => "Hellfire Peninsula",
+			477 => "Nagrand",
+			479 => "Netherstorm",
+			473 => "Shadowmoon Valley",
+			481 => "Shattrath City",
+			478 => "Terokkar Forest",
+			467 => "Zangarmarsh",
+
+			//Northrend
+			486 => "Borean Tundra",
+			510 => "Crystalsong Forest",
+			504 => "Dalaran",
+			488 => "Dragonblight",
+			490 => "Grizzly Hills",
+			491 => "Howling Fjord",
+			541 => "Hrothgar's Landing",
+			492 => "Icecrown",
+			493 => "Sholazar Basin",
+			495 => "The Storm Peaks",
+			501 => "Wintergrasp",
+			496 => "Zul'Drak",
+
+			//Classic Dungeons
+			688 => "Blackfathom Deeps",
+			704 => "Blackrock Depths",
+			721 => "Blackrock Spire",
+			699 => "Dire Maul",
+			691 => "Gnomeregan",
+			750 => "Maraudon",
+			680 => "Ragefire Chasm",
+			760 => "Razorfen Downs",
+			761 => "Razorfen Kraul",
+			764 => "Shadowfang Keep",
+			765 => "Stratholme",
+			756 => "The Deadmines",
+			690 => "The Stockade",
+			687 => "The Temple of Atal'Hakkar",
+			692 => "Uldaman",
+			749 => "Wailing Caverns",
+			686 => "Zul'Farrak",
+
+			//TBC Dungeons
+			722 => "Auchenai Crypts",
+			797 => "Hellfire Ramparts",
+			798 => "Magisters' Terrace",
+			732 => "Mana-Tombs",
+			734 => "Old Hillsbrad Foothills",
+			723 => "Sethekk Halls",
+			724 => "Shadow Labyrinth",
+			731 => "The Arcatraz",
+			733 => "The Black Morass",
+			725 => "The Blood Furnace",
+			729 => "The Botanica",
+			730 => "The Mechanar",
+			710 => "The Shattered Halls",
+			728 => "The Slave Pens",
+			727 => "The Steamvault",
+			726 => "The Underbog",
+
+			//WOTLK Dungeons
+			522 => "Ahn'kahet: The Old Kingdom",
+			533 => "Azjol-Nerub",
+			534 => "Drak'Tharon Keep",
+			530 => "Gundrak",
+			525 => "Halls of Lightning",
+			603 => "Halls of Reflection",
+			526 => "Halls of Stone",
+			602 => "Pit of Saron",
+			521 => "The Culling of Stratholme",
+			601 => "The Forge of Souls",
+			520 => "The Nexus",
+			528 => "The Oculus",
+			536 => "The Violet Hold",
+			542 => "Trial of the Champion",
+			523 => "Utgarde Keep",
+			524 => "Utgarde Pinnacle",
+
+			//Classic Raids
+			755 => "Blackwing Lair",
+			696 => "Molten Core",
+			717 => "Ruins of Ahn'Qiraj",
+			766 => "Temple of Ahn'Qiraj",
+
+			//TBC Raids
+			796 => "Black Temple",
+			776 => "Gruul's Lair",
+			775 => "Hyjal Summit",
+			799 => "Karazhan",
+			779 => "Magtheridon's Lair",
+			780 => "Serpentshrine Cavern",
+			789 => "Sunwell Plateau",
+			782 => "Tempest Keep",
+
+			//WOTLK Raids
+			604 => "Icecrown Citadel",
+			535 => "Naxxramas",
+			718 => "Onyxia's Lair",
+			527 => "The Eye of Eternity",
+			531 => "The Obsidian Sanctum",
+			609 => "The Ruby Sanctum",
+			543 => "Trial of the Crusader",
+			529 => "Ulduar",
+			532 => "Vault of Archavon",
+
+			//Battlegrounds
+			401 => "Alterac Valley",
+			461 => "Arathi Basin",
+			482 => "Eye of the Storm",
+			512 => "Strand of the Ancients",
+			443 => "Warsong Gulch"
 		);
 
 		$author = ucfirst($_SESSION['username']);
@@ -499,11 +680,20 @@ function AddChangelog()
 		$type1  = $_POST['type1'];
 		$id1    = $_POST['id1'];
 		$note1  = $_POST['note1'];
-		@$ins1   = $_POST['instance1'];
+		$zone1  = $_POST['zone1'];
+		@$ins1  = $_POST['instance1'];
 
 		if($type1 !== 4)
 		{
 			$db1 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type1]) . '=' . $id1 . '" target="_BLANK"></a>';
+		}
+		if($type1 == 3)
+		{
+			$db1 = '<a href="http://wotlk.openwow.com/npc=' . $id1 . '" target="_BLANK"></a>';
+		}
+		elseif($type1 == 5)
+		{
+			$db1 = $ZoneToName[$zone1];
 		}
 		else
 		{
@@ -519,6 +709,10 @@ function AddChangelog()
 		{
 			$db2 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type2]) . '=' . $id2 . '" target="_BLANK"></a>';
 		}
+		if($type2 == 3)
+		{
+			$db2 = '<a href="http://wotlk.openwow.com/npc=' . $id2 . '" target="_BLANK"></a>';
+		}
 		else
 		{
 			$db2 = '<a href="http://wotlk.openwow.com/spell=' . $id2 . '" target="_BLANK"></a>';
@@ -532,6 +726,10 @@ function AddChangelog()
 		if($type3 !== 4)
 		{
 			$db3 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type3]) . '=' . $id3 . '" target="_BLANK"></a>';
+		}
+		if($type3 == 3)
+		{
+			$db3 = '<a href="http://wotlk.openwow.com/npc=' . $id3 . '" target="_BLANK"></a>';
 		}
 		else
 		{
@@ -547,6 +745,10 @@ function AddChangelog()
 		{
 			$db4 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type4]) . '=' . $id4 . '" target="_BLANK"></a>';
 		}
+		if($type4 == 3)
+		{
+			$db4 = '<a href="http://wotlk.openwow.com/npc=' . $id4 . '" target="_BLANK"></a>';
+		}
 		else
 		{
 			$db4 = '<a href="http://wotlk.openwow.com/spell=' . $id4 . '" target="_BLANK"></a>';
@@ -560,6 +762,10 @@ function AddChangelog()
 		if($type5 !== 4)
 		{
 			$db5 = '<a href="http://wotlk.openwow.com/' . strtolower($Types[$type5]) . '=' . $id5 . '" target="_BLANK"></a>';
+		}
+		if($type5 == 3)
+		{
+			$db5 = '<a href="http://wotlk.openwow.com/npc=' . $id5 . '" target="_BLANK"></a>';
 		}
 		else
 		{
@@ -630,6 +836,197 @@ function AddChangelog()
 			    <center>Added changelog with revision: ' . $rev . '</center>
 				<a href="#" class="close">&times;</a>
 			</div>';
+	}
+}
+
+
+
+function Zones()
+{
+	$Zones = array(
+
+		//Kalimdor
+		772 => "Ahn'Qiraj: The Fallen Kingdom",
+		894 => "Ammen Vale",
+		43  => "Ashenvale",
+		181 => "Azshara",
+		464 => "Azuremyst Isle",
+		476 => "Bloodmyst Isle",
+		42  => "Darkshore",
+		381 => "Darnassus",
+		101 => "Desolace",
+		4   => "Durotar",
+		141 => "Dustwallow Marsh",
+		891 => "Echo Isles",
+		182 => "Felwood",
+		121 => "Feralas",
+		241 => "Moonglade",
+		606 => "Mount Hyjal",
+		9   => "Mulgore",
+		11  => "Northern Barrens",
+		321 => "Orgrimmar",
+		888 => "Shadowglen",
+		261 => "Silithus",
+		607 => "Southern Barrens",
+		81  => "Stonetalon Mountains",
+		161 => "Tanaris",
+		41  => "Teldrassil",
+		471 => "The Exodar",
+		61  => "Thousand Needles",
+		362 => "Thunder Bluff",
+		201 => "Un'Goro Crater",
+		889 => "Valley of Trials",
+		281 => "Winterspring",
+
+		//Eastern Kingdoms
+		16  => "Arathi Highlands",
+		17  => "Badlands",
+		19  => "Blasted Lands",
+		29  => "Burning Steppes",
+		866 => "Coldridge Valley",
+		32  => "Deadwind Pass",
+		27  => "Dun Morogh",
+		34  => "Duskwood",
+		23  => "Eastern Plaguelands",
+		30  => "Elwynn Forest",
+		462 => "Eversong Woods",
+		463 => "Ghostlands",
+		24  => "Hillsbrad Foothills",
+		341 => "Ironforge",
+		499 => "Isle of Quel'Danas",
+		35  => "Loch Modan",
+		36  => "Redridge Mountains",
+		28  => "Searing Gorge",
+		480 => "Silvermoon City",
+		21  => "Silverpine Forest",
+		301 => "Stormwind City",
+		33  => "Stranglethorn Vale",
+		893 => "Sunstrider Isle",
+		38  => "Swamp of Sorrows",
+		26  => "The Hinterlands",
+		20  => "Tirisfal Glades",
+		382 => "Undercity",
+		22  => "Western Plaguelands",
+		39  => "Westfall",
+		40  => "Wetlands",
+
+		//Outland
+		475 => "Blade's Edge Mountains",
+		465 => "Hellfire Peninsula",
+		477 => "Nagrand",
+		479 => "Netherstorm",
+		473 => "Shadowmoon Valley",
+		481 => "Shattrath City",
+		478 => "Terokkar Forest",
+		467 => "Zangarmarsh",
+
+		//Northrend
+		486 => "Borean Tundra",
+		510 => "Crystalsong Forest",
+		504 => "Dalaran",
+		488 => "Dragonblight",
+		490 => "Grizzly Hills",
+		491 => "Howling Fjord",
+		541 => "Hrothgar's Landing",
+		492 => "Icecrown",
+		493 => "Sholazar Basin",
+		495 => "The Storm Peaks",
+		501 => "Wintergrasp",
+		496 => "Zul'Drak",
+
+		//Classic Dungeons
+		688 => "Blackfathom Deeps",
+		704 => "Blackrock Depths",
+		721 => "Blackrock Spire",
+		699 => "Dire Maul",
+		691 => "Gnomeregan",
+		750 => "Maraudon",
+		680 => "Ragefire Chasm",
+		760 => "Razorfen Downs",
+		761 => "Razorfen Kraul",
+		764 => "Shadowfang Keep",
+		765 => "Stratholme",
+		756 => "The Deadmines",
+		690 => "The Stockade",
+		687 => "The Temple of Atal'Hakkar",
+		692 => "Uldaman",
+		749 => "Wailing Caverns",
+		686 => "Zul'Farrak",
+
+		//TBC Dungeons
+		722 => "Auchenai Crypts",
+		797 => "Hellfire Ramparts",
+		798 => "Magisters' Terrace",
+		732 => "Mana-Tombs",
+		734 => "Old Hillsbrad Foothills",
+		723 => "Sethekk Halls",
+		724 => "Shadow Labyrinth",
+		731 => "The Arcatraz",
+		733 => "The Black Morass",
+		725 => "The Blood Furnace",
+		729 => "The Botanica",
+		730 => "The Mechanar",
+		710 => "The Shattered Halls",
+		728 => "The Slave Pens",
+		727 => "The Steamvault",
+		726 => "The Underbog",
+
+		//WOTLK Dungeons
+		522 => "Ahn'kahet: The Old Kingdom",
+		533 => "Azjol-Nerub",
+		534 => "Drak'Tharon Keep",
+		530 => "Gundrak",
+		525 => "Halls of Lightning",
+		603 => "Halls of Reflection",
+		526 => "Halls of Stone",
+		602 => "Pit of Saron",
+		521 => "The Culling of Stratholme",
+		601 => "The Forge of Souls",
+		520 => "The Nexus",
+		528 => "The Oculus",
+		536 => "The Violet Hold",
+		542 => "Trial of the Champion",
+		523 => "Utgarde Keep",
+		524 => "Utgarde Pinnacle",
+
+		//Classic Raids
+		755 => "Blackwing Lair",
+		696 => "Molten Core",
+		717 => "Ruins of Ahn'Qiraj",
+		766 => "Temple of Ahn'Qiraj",
+
+		//TBC Raids
+		796 => "Black Temple",
+		776 => "Gruul's Lair",
+		775 => "Hyjal Summit",
+		799 => "Karazhan",
+		779 => "Magtheridon's Lair",
+		780 => "Serpentshrine Cavern",
+		789 => "Sunwell Plateau",
+		782 => "Tempest Keep",
+
+		//WOTLK Raids
+		604 => "Icecrown Citadel",
+		535 => "Naxxramas",
+		718 => "Onyxia's Lair",
+		527 => "The Eye of Eternity",
+		531 => "The Obsidian Sanctum",
+		609 => "The Ruby Sanctum",
+		543 => "Trial of the Crusader",
+		529 => "Ulduar",
+		532 => "Vault of Archavon",
+
+		//Battlegrounds
+		401 => "Alterac Valley",
+		461 => "Arathi Basin",
+		482 => "Eye of the Storm",
+		512 => "Strand of the Ancients",
+		443 => "Warsong Gulch"
+	);
+
+	foreach($Zones as $Zone => $value)
+	{
+		echo '<option value="' . $Zone . '">' . $value . '</option>';
 	}
 }
 

@@ -115,7 +115,7 @@
 		  			<label>User Agreement</label>
 	  				<label for="checkbox1">
 		  				<input id="box1" type="checkbox" name="agreement" />
-  						<label for="box1">By registering to our service you agree that you are over 13 years old and you accept our <a href="http://worldofnorthcraft.com/policies/tos.php">Terms of Service</a> and <a href="http://worldofnorthcraft.com/policies/privacy.php">Privacy Policy</a>.</label>
+  						<label for="box1">By registering to our service you agree that you are over 13 years old and you accept our <a href="http://worldofnorthcraft.com/policies/terms.php">Terms of Service</a> and <a href="http://worldofnorthcraft.com/policies/privacy.php">Privacy Policy</a>.</label>
 		  			</label>
 
 		  			<div id="g-recaptcha2" data-sitekey="6Ld9gigTAAAAALSt-Um1KsdQpquhmaO7ROAvvSLE"></div>
@@ -126,6 +126,19 @@
 	  	</form>
 	</div>
   	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div class="countdown">
+  <a href="https://www.reddit.com/comments/5gu8js/northcraft_open_beta_2_this_friday_9th_december/">
+	  <div id="timer">Days</div>
+		<script type="text/javascript">
+		$("#timer").countdown("2016/12/08 14:57:00", function(event) {
+		   var $this = $(this).html(event.strftime(
+				'<div class="timer-title">Northcraft Open Beta Weekend</div><div class="timer-top"><div class="timer-number">%-D</div><div class="timer-splitter">:</div><div class="timer-number">%-H</div><div class="timer-splitter">:</div><div class="timer-number">%-M</div><div class="timer-splitter">:</div><div class="timer-number">%-S</div></div>'
+			    +  '<div class="timer-bottom"><div class="timer-type">Days</div><div class="timer-type">Hours</div><div class="timer-type">Minutes</div><div class="timer-type">Seconds</div></div>'));
+				});
+		</script>
+	</a>
 </div>
 
 </body>

@@ -80,12 +80,6 @@
 		  			
 		  			<label>Password</label>
 	  				<input type="password" name="password" />
-
-		  			<label>User Agreement</label>
-	  				<label for="checkbox1">
-		  				<input id="box1" type="checkbox" name="agreement" />
-  						<label for="box1">By registering to our service you agree that you are over 13 years old and you accept our <a href="http://worldofnorthcraft.com/policies/tos.php">Terms of Service</a> and <a href="http://worldofnorthcraft.com/policies/privacy.php">Privacy Policy</a>.</label>
-		  			</label>
 		  			
 		  			<div id="g-recaptcha" data-sitekey="6Ld8gigTAAAAAAEF6MiiuKw0H0DybEVe4PDi0AaV"></div>
 
@@ -117,6 +111,12 @@
 		  			
 		  			<label>Re-Password</label>
 	  				<input type="password" name="re-password" />
+		
+		  			<label>User Agreement</label>
+	  				<label for="checkbox1">
+		  				<input id="box1" type="checkbox" name="agreement" />
+  						<label for="box1">By registering to our service you agree that you are over 13 years old and you accept our <a href="http://worldofnorthcraft.com/policies/terms.php">Terms of Service</a> and <a href="http://worldofnorthcraft.com/policies/privacy.php">Privacy Policy</a>.</label>
+		  			</label>
 
 		  			<div id="g-recaptcha2" data-sitekey="6Ld9gigTAAAAALSt-Um1KsdQpquhmaO7ROAvvSLE"></div>
 		  			

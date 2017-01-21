@@ -48,6 +48,9 @@ function ItemDatabase()
 								7 => '<span class="heirloom">' . $item['name'] . '</span>'
 							);
 
+
+							
+
 							echo '<div class="database-item">
 									<a href="http://wotlk.openwow.com/?item=' . $item['entry'] . '"></a>
 								</div>';

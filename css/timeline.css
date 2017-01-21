@@ -33,6 +33,22 @@
 	background: url('../img/timeline/img2.jpg') no-repeat;
 }
 
+#timeline-three
+{
+	width: 100%;
+	height: 220px;
+	display: block;
+	background: url('../img/timeline/img3.jpg') no-repeat;
+}
+
+#timeline-four
+{
+	width: 100%;
+	height: 220px;
+	display: block;
+	background: url('../img/timeline/img4.jpg') no-repeat;
+}
+
 .two-small
 {
 	background: url('../img/timeline/imgsmall2.jpg') no-repeat;
@@ -49,15 +65,21 @@
 	cursor: pointer;
 }
 
-.timeline-three
+#timeline-three
 {
 	width: 100%;
 	height: 220px;
 	display: block;
-	background: url('../img/timeline/imgsmall3.jpg') no-repeat;
+	background: url('../img/timeline/img3.jpg') no-repeat;
 }
 
-.timeline-four
+#timeline-three:hover
+{
+	opacity: 0.95;
+	cursor: pointer;
+}
+
+#timeline-four
 {
 	width: 100%;
 	height: 220px;
@@ -65,15 +87,27 @@
 	background: url('../img/timeline/imgsmall4.jpg') no-repeat;
 }
 
-.timeline-five
+#timeline-four:hover
+{
+	opacity: 0.95;
+	cursor: pointer;
+}
+
+#timeline-five
 {
 	width: 100%;
 	height: 220px;
 	display: block;
-	background: url('../img/timeline/imgsmall5.jpg') no-repeat;
+	background: url('../img/timeline/img5.jpg') no-repeat;
 }
 
-.timeline-six
+#timeline-five:hover
+{
+	opacity: 0.95;
+	cursor: pointer;
+}
+
+#timeline-six
 {
 	width: 100%;
 	height: 220px;
@@ -81,6 +115,12 @@
 	background: url('../img/timeline/imgsmall6.jpg') no-repeat;
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
+}
+
+#timeline-six:hover
+{
+	opacity: 0.95;
+	cursor: pointer;
 }
 
 .timeline-one-left
@@ -172,6 +212,34 @@
 	z-index: 1;
 }
 
+.timeline-three-content
+{
+	padding: 5px 0px 0px 25px;
+	display: none;
+	z-index: 1;
+}
+
+.timeline-four-content
+{
+	padding: 5px 0px 0px 25px;
+	display: none;
+	z-index: 1;
+}
+
+.timeline-five-content
+{
+	padding: 5px 0px 0px 25px;
+	display: none;
+	z-index: 1;
+}
+
+.timeline-six-content
+{
+	padding: 5px 0px 0px 25px;
+	display: none;
+	z-index: 1;
+}
+
 .timeline-top-header
 {
 	width: 100%;
@@ -206,6 +274,7 @@
 .timeline-content-content
 {
 	float:left;
+	margin-bottom: 20px;
 }
 
 .timeline-content-left
@@ -321,6 +390,12 @@
 	margin-left: -4px;
 }
 
-
+.pvp-name
+{
+	font-family: 'Play', sans-serif;
+	font-weight: 400;
+	font-size: 1.1rem;
+	float: left;
+}
 
 

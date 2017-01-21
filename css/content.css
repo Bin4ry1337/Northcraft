@@ -439,6 +439,28 @@
 				color: #008CBA;
 			}
 
+			.changelog td:last-child
+			{
+				width: 100px;
+			}
+
+			.changelog-stats
+			{
+				width: 100%;
+				background-color: #333;
+				display: block;
+				float: left;
+				border-left: 1px #EEE solid;
+				border-right: 1px #EEE solid;
+			}
+
+			.c-stat
+			{
+				float: left;
+				color: #FFF;
+				padding: 5px 10px 5px 15px;
+			}
+
 				.connect-box
 				{
 
@@ -713,3 +735,44 @@ input[type=checkbox] + label:before { letter-spacing: 5px; } /* space between ch
 
 input[type=checkbox]:checked + label:before { content: "\f046"; font-size: 18px; } /* checked icon */
 input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+
+.page-nav ul
+{
+	list-style: none;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.page-nav ul li a
+{
+	float: left;
+	padding: 5px 8px 5px 8px;
+	color: #111;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.9rem;
+	text-decoration: none;
+	margin-top: 5px;
+}
+
+.page-nav ul li a:hover
+{
+	float: left;
+	padding: 5px 8px 5px 8px;
+	color: #2c82c9;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.9rem;
+	text-decoration: none;
+	margin-top: 5px;
+}
+
+.page-nav ul li a .current-nav
+{
+	color: #FFF;
+	background-color: #2c82c9;
+	font-family: 'Lato', sans-serif; /* Default Font Family */
+	font-weight: 400;
+	font-size: 0.9rem;
+}

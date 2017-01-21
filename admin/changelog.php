@@ -51,11 +51,15 @@ include('header.php');
 									<option value="2">Spell</option>
 									<option value="3">NPC</option>
 									<option value="4">Talent</option>
+									<option value="5">Zone</option>
 								</select>
 							</div>
 							<div class="input column small-12 medium-3 large-2">
 								<label>ID</label>
-								<input type="text" name="id1" />
+								<!--<input type="text" name="id1" />-->
+								<select name="zone1">
+									<?php Zones(); ?>
+								</select>
 							</div>
 							<div class="input column small-12 medium-5 large-7">
 								<label>Note</label>
